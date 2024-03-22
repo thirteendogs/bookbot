@@ -5,7 +5,8 @@ def main():
         book_words = get_book_words(file_contents)
         num_words_in_book = get_num_words_in_book(book_words)
         print(f"This book has {num_words_in_book} words!")
-        get_count_characters_dict(book_words)
+        count_characters_dict = get_count_characters_dict(book_words)
+        sort_characters_dict(count_characters_dict)
 
 def get_book_words(book):
     return book.split()
@@ -23,8 +24,16 @@ def get_count_characters_dict(book_words):
                 characters_count_dict[char] = 1
             else:
                 characters_count_dict[char] +=1
-    print(characters_count_dict)
     return characters_count_dict
+
+def sort_characters_dict(characters_dict):
+    characters_dict_list_keys = sorted(list(characters_dict))
+    sorted_characters_dict = {}
+    
+    for char in characters_dict_list_keys:
+        sorted_characters_dict[char] = characters_dict[char]
+
+    return sorted_characters_dict
 
 book = "./books/frankenstein.txt"
 
